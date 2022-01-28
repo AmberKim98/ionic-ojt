@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,60 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(public alertCtrl: AlertController) {}
 
+  async showAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Welcome!',
+      message: 'Please click "OK" button to register your account!',
+      buttons: [
+        {
+          text: 'Register',
+          handler: () => {
+            this.promptAlert();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'Cancel'
+        }
+      ]
+    })
+    await alert.present();
+  }
+
+  async successAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Congratulations!',
+      message: 'Your account was successfully registered!'
+    })
+    await alert.present();
+  }
+
+  async promptAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Your Information',
+      inputs: [
+        {
+          name: 'name',
+          type: 'text',
+          placeholder: 'Your Full Name'
+        },
+        {
+          name: 'password',
+          type: 'password',
+          placeholder: 'Type a new password'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Next',
+          handler: () => {
+            this.successAlert();
+          }
+        }
+      ]
+    })
+    await alert.present();
+  }
 }
