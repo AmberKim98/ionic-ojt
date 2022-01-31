@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-back-button defaultHref="tabs/tab1">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-back-button>
+      <ion-title class="ion-no-padding">Register</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-top">
+  <ion-list-header><ion-text color="primary">Please fill up your information correctly.</ion-text></ion-list-header>
+  <ion-item>
+    <ion-label position="floating">Full Name</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Type a New Password</ion-label>
+    <ion-input type="password" minlength="6"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Confirm Password</ion-label>
+    <ion-input type="password" minlength="6"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Address</ion-label>
+    <ion-textarea></ion-textarea>
+  </ion-item>
+  
+  <ion-row class="ion-justify-content-center ion-padding-top">
+    <ion-button shape="round" color="success" [routerLink]="['/nextstep']">
+      <ion-label>Next Step</ion-label>
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+  </ion-row>
+</ion-content>

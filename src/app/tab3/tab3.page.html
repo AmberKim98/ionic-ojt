@@ -18,15 +18,32 @@
 
         <ion-list slot="content">
           <ion-item>
-            <ion-label>Mom</ion-label>
+            <ion-label (click)="showActionSheet()">Mom</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label>Dad</ion-label>
+            <ion-label (click)="showActionSheet()">Dad</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label>Grandma</ion-label>
+            <ion-label (click)="showActionSheet()">Grandma</ion-label>
           </ion-item>
         </ion-list>
+      </ion-accordion>
+
+      <ion-accordion value="all">
+        <ion-item slot="header">
+          <ion-label color="primary">All</ion-label>
+          <ion-badge color="primary">{{ contacts.length }}</ion-badge>
+        </ion-item>
+
+        <ion-list slot="content" id="list">
+          <ion-item *ngFor="let item of data">
+            <ion-label (click)="showActionSheet()">{{ item.name }}</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll threshold="50px" (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
       </ion-accordion>
 
       <ion-accordion value="work">
@@ -37,10 +54,10 @@
 
         <ion-list slot="content">
           <ion-item>
-            <ion-label>Boss</ion-label>
+            <ion-label (click)="showActionSheet()">Boss</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label>Manager</ion-label>
+            <ion-label (click)="showActionSheet()">Manager</ion-label>
           </ion-item>
         </ion-list>
       </ion-accordion>

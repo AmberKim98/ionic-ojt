@@ -10,6 +10,17 @@ export class Tab1Page {
 
   constructor(public alertCtrl: AlertController) {}
 
+  public categories = [
+    { val: 'Business & Finance' },
+    { val: 'Computers & IT Business' },
+    { val: 'Health & Medicine' },
+    { val: 'General News' }
+  ];
+
+  scrollToTop() {
+    document.querySelector('ion-content').scrollToTop(1000);
+  }
+
   async showAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Welcome!',
