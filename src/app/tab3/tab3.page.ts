@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { ActionSheetController, IonInfiniteScroll } from '@ionic/angular';
+import { Component, ViewChild } from '@angular/core';
+import { ActionSheetController, IonInfiniteScroll, ToastController } from '@ionic/angular';
+import * as contacts from "../const/data";
 
 @Component({
   selector: 'app-tab3',
@@ -7,125 +8,39 @@ import { ActionSheetController, IonInfiniteScroll } from '@ionic/angular';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  
+  public data = contacts;
+  public contactsList = [];
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
-  constructor(public actionSheetController: ActionSheetController) {
-    for(let i=0; i<this.contacts.length; i++)
+  constructor(public actionSheetController: ActionSheetController, private toastController: ToastController) {}
+
+  ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    for(var i=0; i<this.data.contacts.length; i++)
     {
-      this.data.push(this.contacts[i]);
+      this.contactsList.push(this.data.contacts[i]);
     }
   }
 
-  data = [];
-
-  public contacts = [
-    {
-        name: 'Mom',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Dad',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Grandma',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Ginny',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Georgia',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Christine',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Evelynn',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Mary',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Maybel',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Seraphine',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Akali',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Aries',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Bruno',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Ivy',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Peter',
-        created: '2022-01-31'
-    },
-    {
-        name: 'Ryan',
-        created: '2022-01-31'
-    },
-    {
-      name: 'Bruno',
-      created: '2022-01-31'
-  },
-  {
-      name: 'Ivy',
-      created: '2022-01-31'
-  },
-  {
-      name: 'Peter',
-      created: '2022-01-31'
-  },
-  {
-      name: 'Ryan',
-      created: '2022-01-31'
-  },
-  {
-    name: 'Bruno',
-    created: '2022-01-31'
-  },
-  {
-      name: 'Ivy',
-      created: '2022-01-31'
-  },
-  {
-      name: 'Peter',
-      created: '2022-01-31'
-  },
-  {
-      name: 'Ryan',
-      created: '2022-01-31'
-  },
-  ]
-
   doInfinite(event)
   {
-    console.log('doing infinite...');
     setTimeout(() => {
-      for(let i=0; i<this.contacts.length; i++)
-      {
-        this.data.push(this.contacts[i]);
+      console.log('Done');
+      event.target.complete();
+
+      if (this.contactsList.length == 48) {
+        event.target.disabled = true;
       }
-      event.complete();
+      console.log('---contacts---', this.data.contacts.length)
     }, 500);
+  }
+
+  toggleInfiniteScroll() {
+    this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
   }
 
   async showActionSheet() {
@@ -164,5 +79,20 @@ export class Tab3Page {
       }]
     });
     await actionSheet.present();
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Added to Favorites!',
+      icon: 'checkmark-done-outline',
+      position: 'bottom',
+      duration: 500
+    })
+    await toast.present();
+  }
+
+  onRenderItems(event)
+  {
+    event.detail.complete();  
   }
 }

@@ -17,7 +17,15 @@ const routes: Routes = [
   {
     path: 'nextstep',
     loadChildren: () => import('./nextstep/nextstep.module').then( m => m.NextstepPageModule)
-  }
+  },
+  {
+    path: 'mail',
+    loadChildren: () => import('./mail/mail.module').then( m => m.MailPageModule)
+  },
+  {
+    path: 'tab4',
+    loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
+  },
 ];
 @NgModule({
   imports: [

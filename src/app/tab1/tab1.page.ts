@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -8,7 +9,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab1Page {
 
-  constructor(public alertCtrl: AlertController) {}
+  constructor(public alertCtrl: AlertController, private menu: MenuController) {}
 
   public categories = [
     { val: 'Business & Finance' },
@@ -18,7 +19,7 @@ export class Tab1Page {
   ];
 
   scrollToTop() {
-    document.querySelector('ion-content').scrollToTop(1000);
+    document.querySelector('ion-content').scrollToTop(1500);
   }
 
   async showAlert() {
@@ -74,5 +75,12 @@ export class Tab1Page {
       ]
     })
     await alert.present();
+  }
+
+  doRefresh(event)
+  {
+    setTimeout(()=>{
+      event.target.complete();
+    },2000);
   }
 }

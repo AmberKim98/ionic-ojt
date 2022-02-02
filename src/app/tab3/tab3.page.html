@@ -7,7 +7,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ion-list inset="true">
     <ion-accordion-group>
       <ion-accordion value="favorites">
@@ -17,33 +16,39 @@
         </ion-item>
 
         <ion-list slot="content">
-          <ion-item>
-            <ion-label (click)="showActionSheet()">Mom</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label (click)="showActionSheet()">Dad</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label (click)="showActionSheet()">Grandma</ion-label>
-          </ion-item>
+          <ion-reorder-group (ionItemReorder)="onRenderItems($event)" id="reorder" disabled="false">
+            <ion-item>
+              <ion-label (click)="showActionSheet()">Mom</ion-label>
+              <ion-reorder slot="end"></ion-reorder> 
+            </ion-item>
+            <ion-item>
+              <ion-label (click)="showActionSheet()">Dad</ion-label>
+              <ion-reorder slot="end"></ion-reorder>
+            </ion-item>
+            <ion-item>
+              <ion-label (click)="showActionSheet()">Grandma</ion-label>
+              <ion-reorder slot="end"></ion-reorder>
+            </ion-item>
+          </ion-reorder-group>
         </ion-list>
       </ion-accordion>
-
+      
       <ion-accordion value="all">
         <ion-item slot="header">
           <ion-label color="primary">All</ion-label>
-          <ion-badge color="primary">{{ contacts.length }}</ion-badge>
+          <ion-badge color="primary">{{ contactsList.length }}</ion-badge>
         </ion-item>
 
-        <ion-list slot="content" id="list">
-          <ion-item *ngFor="let item of data">
-            <ion-label (click)="showActionSheet()">{{ item.name }}</ion-label>
+        <ion-list slot="content">
+          <ion-item *ngFor="let contact of contactsList">
+            <ion-label>{{ contact.name }}</ion-label>
           </ion-item>
         </ion-list>
 
-        <ion-infinite-scroll threshold="50px" (ionInfinite)="doInfinite($event)">
-          <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
-        </ion-infinite-scroll>
+        <!-- <ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll> -->
       </ion-accordion>
 
       <ion-accordion value="work">
@@ -53,11 +58,13 @@
         </ion-item>
 
         <ion-list slot="content">
-          <ion-item>
+          <ion-item lines="none">
             <ion-label (click)="showActionSheet()">Boss</ion-label>
+            <ion-icon name="heart" slot="end" (click)="presentToast()"></ion-icon>
           </ion-item>
-          <ion-item>
+          <ion-item lines="none">
             <ion-label (click)="showActionSheet()">Manager</ion-label>
+            <ion-icon name="heart" slot="end" (click)="presentToast()"></ion-icon>
           </ion-item>
         </ion-list>
       </ion-accordion>
@@ -69,4 +76,33 @@
       <ion-icon name="call"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+  <ion-content>
+    <ion-title>Contacts List</ion-title>
+    <ion-button (click)="toggleInfiniteScroll()" size="small" class="ion-margin">
+      Toggle
+    </ion-button>
+
+    <ion-list>
+      <ion-item *ngFor="let item of data.contacts">
+        <ion-label>{{ item.name }}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label>Sim Type</ion-label>
+        <ion-select interface="action-sheet" value="sim">
+          <ion-select-option>SIM 1 (Ooredoo)</ion-select-option>
+          <ion-select-option>SIM 2 (Telenor)</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
 </ion-content>

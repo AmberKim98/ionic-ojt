@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mailbox</ion-title>
+    <ion-back-button defaultHref="tabs/tab1" slot="start">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-router>
+  <ion-route url="/register" component="register"></ion-route>
+</ion-router>
+
+<ion-content>
+  <ion-list>
+    <ion-item lines="full" id="inbox-button">
+      <ion-label>Inbox</ion-label>
+      <ion-icon name="mail-outline" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item lines="full" id="favorite-button">
+      <ion-label>Favorites</ion-label>
+      <ion-icon name="heart" slot="start"></ion-icon>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Spam</ion-label>
+      <ion-icon name="alert-circle-outline" slot="start"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-modal trigger="inbox-button" [swipeToClose]="true">
+    <ng-template>
+      <ion-content>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Inbox</ion-title>
+            <ion-button fill="none" slot="end" (click)="dismiss()"><ion-text color="primary" class="ion-text-capitalize">Close</ion-text></ion-button>
+          </ion-toolbar>
+        </ion-header>
+        <ion-list>
+          <ion-item lines="full">
+            <ion-avatar slot="start">
+              <ion-img src="../../assets/img/profile/download (1).png"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <ion-text>
+                <h2><b>Mary</b></h2>
+                <h5>Hello! Reply me ASAP!</h5>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-avatar slot="start">
+              <ion-img src="../../assets/img/profile/download (2).png"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <ion-text>
+                <h2><b>Jonathan</b></h2>
+                <h5>Hello! Reply me ASAP!</h5>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
