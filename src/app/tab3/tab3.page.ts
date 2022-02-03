@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { ActionSheetController, IonInfiniteScroll, ToastController } from '@ionic/angular';
-import * as contacts from "../const/data";
+import { Component } from '@angular/core';
+import { ActionSheetController, ToastController } from '@ionic/angular';
+import * as data from "../const/data";
 
 @Component({
   selector: 'app-tab3',
@@ -8,39 +8,11 @@ import * as contacts from "../const/data";
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  
-  public data = contacts;
-  public contactsList = [];
-  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
-
   constructor(public actionSheetController: ActionSheetController, private toastController: ToastController) {}
 
+  public data = data.contacts;
+  
   ngOnInit() {
-    this.loadData();
-  }
-
-  loadData() {
-    for(var i=0; i<this.data.contacts.length; i++)
-    {
-      this.contactsList.push(this.data.contacts[i]);
-    }
-  }
-
-  doInfinite(event)
-  {
-    setTimeout(() => {
-      console.log('Done');
-      event.target.complete();
-
-      if (this.contactsList.length == 48) {
-        event.target.disabled = true;
-      }
-      console.log('---contacts---', this.data.contacts.length)
-    }, 500);
-  }
-
-  toggleInfiniteScroll() {
-    this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
   }
 
   async showActionSheet() {

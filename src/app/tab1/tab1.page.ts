@@ -18,6 +18,18 @@ export class Tab1Page {
     { val: 'General News' }
   ];
 
+  changeTheme(event) {
+    console.log(event.detail.checked);
+    if(event.detail.checked)
+    {
+      document.body.setAttribute('color-theme','dark');
+    }
+    else
+    {
+      document.body.removeAttribute('color-theme');
+    }
+  }
+
   scrollToTop() {
     document.querySelector('ion-content').scrollToTop(1500);
   }

@@ -36,19 +36,14 @@
       <ion-accordion value="all">
         <ion-item slot="header">
           <ion-label color="primary">All</ion-label>
-          <ion-badge color="primary">{{ contactsList.length }}</ion-badge>
+          <ion-badge color="primary">{{ data.length }}</ion-badge>
         </ion-item>
 
         <ion-list slot="content">
-          <ion-item *ngFor="let contact of contactsList">
+          <ion-item *ngFor="let contact of data">
             <ion-label>{{ contact.name }}</ion-label>
           </ion-item>
         </ion-list>
-
-        <!-- <ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="doInfinite($event)">
-          <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
-          </ion-infinite-scroll-content>
-        </ion-infinite-scroll> -->
       </ion-accordion>
 
       <ion-accordion value="work">
@@ -78,22 +73,6 @@
   </ion-fab>
 
   <ion-content>
-    <ion-title>Contacts List</ion-title>
-    <ion-button (click)="toggleInfiniteScroll()" size="small" class="ion-margin">
-      Toggle
-    </ion-button>
-
-    <ion-list>
-      <ion-item *ngFor="let item of data.contacts">
-        <ion-label>{{ item.name }}</ion-label>
-      </ion-item>
-    </ion-list>
-
-    <ion-infinite-scroll threshold="100px" id="infinite-scroll" (ionInfinite)="doInfinite($event)">
-      <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-
     <ion-list>
       <ion-item lines="none">
         <ion-label>Sim Type</ion-label>

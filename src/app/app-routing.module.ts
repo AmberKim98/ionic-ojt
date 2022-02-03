@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'tab4',
     loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
   },
+  {
+    path: 'friendslist',
+    loadChildren: () => import('./friendslist/friendslist.module').then( m => m.FriendslistPageModule)
+  },
 ];
 @NgModule({
   imports: [

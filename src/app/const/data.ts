@@ -184,7 +184,39 @@ export const contacts = [
         created: '2022-01-31'
     },
     {
+        name: 'Bruno',
+        created: '2022-01-31'
+    },
+    {
+        name: 'Ivy',
+        created: '2022-01-31'
+    },
+    {
         name: 'Peter',
         created: '2022-01-31'
-    }
+    },
+    {
+        name: 'Bruno',
+        created: '2022-01-31'
+    },
+    {
+        name: 'Ivy',
+        created: '2022-01-31'
+    },
+    {
+        name: 'Peter',
+        created: '2022-01-31'
+    },
+    {
+        name: 'Bruno',
+        created: '2022-01-31'
+    },
+    {
+        name: 'Ivy',
+        created: '2022-01-31'
+    },
+    {
+        name: 'Peter',
+        created: '2022-01-31'
+    },
 ]
