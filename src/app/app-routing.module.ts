@@ -30,6 +30,30 @@ const routes: Routes = [
     path: 'friendslist',
     loadChildren: () => import('./friendslist/friendslist.module').then( m => m.FriendslistPageModule)
   },
+  {
+    path: 'barcode-scanner',
+    loadChildren: () => import('./barcode-scanner/barcode-scanner.module').then( m => m.BarcodeScannerPageModule)
+  },
+  {
+    path: 'create',
+    loadChildren: () => import('./create/create.module').then( m => m.CreatePageModule)
+  },
+  {
+    path: 'update/:id',
+    loadChildren: () => import('./update/update.module').then( m => m.UpdatePageModule)
+  },
+  {
+    path: 'list',
+    loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
+  },
+  {
+    path: 'show/:id',
+    loadChildren: () => import('./show/show.module').then( m => m.ShowPageModule)
+  },
 ];
 @NgModule({
   imports: [

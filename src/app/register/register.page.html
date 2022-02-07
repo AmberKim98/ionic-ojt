@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding-top">
+<ion-content class="ion-padding-top" [fullscreen]="true">
   <ion-list-header><ion-text color="primary">Please fill up your information correctly.</ion-text></ion-list-header>
 
   <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f)">
@@ -82,9 +82,20 @@
       <ion-icon name="information-circle-outline" color="danger" slot="start" class="ion-no-margin"></ion-icon>
     </ion-item>
 
-    <ion-row class="ion-justify-content-center ion-padding-top">
-      <ion-button type="submit" shape="round" class="ion-text-capitalize">Submit</ion-button>
+    <ion-row class="ion-justify-content-center ion-padding">
+      <ion-button type="submit" color="success" class="ion-text-capitalize" size="small">Submit</ion-button>
+      <ion-button class="ion-text-capitalize" (click)="getUsers()" size="small">Get Users</ion-button>
     </ion-row>
   </form>
-  
+
+  <ion-content>
+    <ion-list>
+      <ion-title>Users List</ion-title>
+      <ion-item *ngFor="let user of row_data" lines="none">
+        <ion-text slot="start">{{ user.name }}</ion-text>
+        <ion-button color="success" size="small" (click)="showUpdatePrompt(user)" slot="end">Update</ion-button>
+        <ion-button color="danger" size="small" (click)="showDeleteAlert(user)" slot="end">Delete</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-content>

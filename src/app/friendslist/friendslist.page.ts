@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 import { IonInfiniteScroll } from '@ionic/angular';
 import * as friends from "../const/data";
+import { RegisterPage } from '../register/register.page';
 
 @Component({
   selector: 'app-friendslist',
@@ -13,8 +15,10 @@ export class FriendslistPage implements OnInit {
   
   public data = friends;
   public friendsList = [];
+  db_obj: SQLiteObject;
+  row_data: any = [];
 
-  constructor() { }
+  constructor(public RegisterPage: RegisterPage) {}
 
   ngOnInit() {
     let max = this.data.contacts.length;
@@ -40,5 +44,14 @@ export class FriendslistPage implements OnInit {
       }
       event.target.complete();
     }, 500);
+  }
+
+  /**
+   * Get users list.
+   * 
+   */
+  getUsers()
+  {
+
   }
 }

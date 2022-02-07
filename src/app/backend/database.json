@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "Thomas",
+      "email": "byron.carlson@example.com",
+      "username": "carlson",
+      "id": 1
+    },
+    {
+      "name": "Cassandra",
+      "email": "cassandra.holland@example.com",
+      "username": "holland",
+      "id": 3
+    },
+    {
+      "name": "Henry",
+      "email": "henry.hanson@example.com",
+      "username": "hanson",
+      "id": 4
+    },
+    {
+      "name": "Hare",
+      "email": "hare@gmail.com",
+      "username": "hare",
+      "id": 5
+    },
+    {
+      "name": "Suki",
+      "email": "suki@gmail.com",
+      "username": "suki",
+      "id": 6
+    },
+    {
+      "name": "Amber Kim",
+      "email": "amber@gmail.com",
+      "username": "amber",
+      "id": 7
+    }
+  ]
+}
